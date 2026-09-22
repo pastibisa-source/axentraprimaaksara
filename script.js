@@ -1,94 +1,349 @@
-// =========================================================
-// AXENTRA PRIMA AKSARA
-// WEBSITE INTERACTION
-// =========================================================
+/* =========================================================
+   AXENTRA PRIMA AKSARA
+   DASHBOARD NAVIGATION
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    const navButtons =
+        document.querySelectorAll("[data-page]");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+    const mobileMenuButton =
+        document.getElementById("mobileMenuButton");
 
 
-// ================= NAVBAR =================
+    /* =====================================================
+       OPEN PAGE
+    ===================================================== */
 
-const navbar = document.getElementById("navbar");
+    function openPage(pageId, updateURL = true) {
 
-window.addEventListener("scroll", function () {
+        const target =
+            document.getElementById(pageId);
 
-    if (window.scrollY > 30) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
+        if (!target) return;
+
+
+        /* Remove active page */
+
+        pages.forEach(page => {
+
+            page.classList.remove("active-page");
+
+        });
+
+
+        /* Add active page */
+
+        setTimeout(() => {
+
+            target.classList.add("active-page");
+
+        }, 40);
+
+
+        /* Update navbar */
+
+        document
+            .querySelectorAll(".nav-link")
+            .forEach(button => {
+
+                button.classList.remove("active");
+
+                if (
+                    button.dataset.page === pageId
+                ) {
+
+                    button.classList.add("active");
+
+                }
+
+            });
+
+
+        /* Close mobile menu */
+
+        mobileMenu.classList.remove("show");
+
+
+        /* Reset internal scroll */
+
+        target.scrollTop = 0;
+
+
+        /* URL */
+
+        if (updateURL) {
+
+            history.pushState(
+                { page: pageId },
+                "",
+                pageId === "home"
+                    ? window.location.pathname
+                    : `#${pageId}`
+            );
+
+        }
+
     }
 
-});
 
+    /* =====================================================
+       ALL PAGE BUTTONS
+    ===================================================== */
 
-// ================= MOBILE MENU =================
+    navButtons.forEach(button => {
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+        button.addEventListener("click", event => {
 
-menuToggle.addEventListener("click", function () {
+            event.preventDefault();
 
-    navMenu.classList.toggle("active");
+            const pageId =
+                button.dataset.page;
 
-});
+            openPage(pageId);
 
-
-// Tutup menu setelah memilih menu
-
-const navLinks = document.querySelectorAll(".nav-menu a");
-
-navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navMenu.classList.remove("active");
+        });
 
     });
 
-});
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    mobileMenuButton.addEventListener(
+        "click",
+        () => {
+
+            mobileMenu.classList.toggle("show");
+
+        }
+    );
 
 
-// ================= BACK TO TOP =================
+    /* =====================================================
+       CLICK OUTSIDE MOBILE MENU
+    ===================================================== */
 
-const backTop = document.getElementById("backTop");
+    document.addEventListener(
+        "click",
+        event => {
 
-window.addEventListener("scroll", function () {
+            if (
+                mobileMenu.classList.contains("show") &&
+                !mobileMenu.contains(event.target) &&
+                !mobileMenuButton.contains(event.target)
+            ) {
 
-    if (window.scrollY > 500) {
+                mobileMenu.classList.remove("show");
 
-        backTop.classList.add("show");
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       BROWSER BACK BUTTON
+    ===================================================== */
+
+    window.addEventListener(
+        "popstate",
+        () => {
+
+            const hash =
+                window.location.hash.replace("#", "");
+
+            if (hash && document.getElementById(hash)) {
+
+                openPage(hash, false);
+
+            } else {
+
+                openPage("home", false);
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INITIAL PAGE
+    ===================================================== */
+
+    const initialHash =
+        window.location.hash.replace("#", "");
+
+    if (
+        initialHash &&
+        document.getElementById(initialHash)
+    ) {
+
+        openPage(
+            initialHash,
+            false
+        );
 
     } else {
 
-        backTop.classList.remove("show");
+        openPage(
+            "home",
+            false
+        );
 
     }
 
-});
+
+    /* =====================================================
+       FAQ ACCORDION
+    ===================================================== */
+
+    const faqItems =
+        document.querySelectorAll(
+            ".faq-list details"
+        );
 
 
-backTop.addEventListener("click", function () {
+    faqItems.forEach(item => {
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        item.addEventListener(
+            "toggle",
+            () => {
+
+                if (!item.open) return;
+
+                faqItems.forEach(other => {
+
+                    if (
+                        other !== item &&
+                        other.open
+                    ) {
+
+                        other.open = false;
+
+                    }
+
+                });
+
+            }
+        );
+
     });
 
-});
+
+    /* =====================================================
+       KEYBOARD NAVIGATION
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+
+                openPage("home");
+
+            }
+
+        }
+    );
 
 
-// ================= CLOSE MOBILE MENU WHEN CLICK OUTSIDE =================
+    /* =====================================================
+       SMOOTH INTERNAL LINKS
+    ===================================================== */
 
-document.addEventListener("click", function (event) {
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(link => {
 
-    const clickedInsideMenu =
-        navMenu.contains(event.target);
+            link.addEventListener(
+                "click",
+                event => {
 
-    const clickedToggle =
-        menuToggle.contains(event.target);
+                    const targetId =
+                        link.getAttribute("href")
+                            .replace("#", "");
 
-    if (!clickedInsideMenu && !clickedToggle) {
+                    if (
+                        document.getElementById(targetId)
+                    ) {
 
-        navMenu.classList.remove("active");
+                        event.preventDefault();
+
+                        openPage(targetId);
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       PREVENT PAGE SCROLL ON HOME
+    ===================================================== */
+
+    const home =
+        document.getElementById("home");
+
+    home.addEventListener(
+        "wheel",
+        event => {
+
+            if (
+                home.classList.contains(
+                    "active-page"
+                )
+            ) {
+
+                event.preventDefault();
+
+            }
+
+        },
+        { passive: false }
+    );
+
+
+    /* =====================================================
+       LOGO / BRAND CLICK
+    ===================================================== */
+
+    const brand =
+        document.querySelector(".brand");
+
+    if (brand) {
+
+        brand.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                openPage("home");
+
+            }
+        );
 
     }
+
+
+    /* =====================================================
+       PRELOADER-LIKE ENTRY
+    ===================================================== */
+
+    document.body.classList.add("website-loaded");
 
 });
