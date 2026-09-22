@@ -4512,3 +4512,633 @@ a {
         padding: 12px;
     }
 }
+/* =========================================================
+   PETA PERSEBARAN CLIENT
+   Tambahkan di bagian paling bawah style.css
+========================================================= */
+
+.client-map-section {
+    width: 100%;
+    margin-top: 70px;
+    padding-top: 65px;
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   JUDUL SECTION
+========================================================= */
+
+.client-map-heading {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.client-map-heading .eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.client-map-heading h2 {
+    margin: 0 0 16px;
+
+    color: var(--navy);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: clamp(30px, 4vw, 46px);
+
+    line-height: 1.15;
+
+    letter-spacing: -1px;
+}
+
+.client-map-heading h2 span {
+    color: var(--blue);
+}
+
+.client-map-heading p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   KARTU UTAMA PETA
+========================================================= */
+
+.client-map-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(320px, .75fr);
+
+    gap: 25px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.98),
+            rgba(244,249,255,.96)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(4,39,82,.10);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   AREA GAMBAR PETA
+========================================================= */
+
+.client-map-image {
+    position: relative;
+
+    min-height: 470px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 25px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f4f9ff 0%,
+            #ffffff 50%,
+            #fffaf0 100%
+        );
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(6,45,98,.07);
+
+    overflow: hidden;
+}
+
+
+/* Efek cahaya dekoratif */
+
+.client-map-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -160px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,166,58,.15),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.client-map-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -140px;
+    bottom: -140px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(23,105,170,.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LABEL "PERSEBARAN CLIENT"
+========================================================= */
+
+.map-image-label {
+    position: absolute;
+
+    top: 18px;
+    left: 20px;
+
+    z-index: 5;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 13px;
+
+    color: var(--navy);
+
+    background:
+        rgba(255,255,255,.88);
+
+    backdrop-filter: blur(10px);
+
+    border:
+        1px solid rgba(6,45,98,.08);
+
+    border-radius: 30px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    box-shadow:
+        0 7px 20px rgba(6,45,98,.08);
+}
+
+
+/* Titik animasi */
+
+.map-pulse {
+    position: relative;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+}
+
+.map-pulse::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -4px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(216,166,58,.5);
+
+    animation:
+        mapPulse 1.8s ease-out infinite;
+}
+
+
+@keyframes mapPulse {
+
+    0% {
+        transform: scale(.7);
+        opacity: .8;
+    }
+
+    70% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   GAMBAR "Peta Client.png"
+========================================================= */
+
+.client-map-image img {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 850px;
+
+    max-height: 470px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 15px 25px rgba(6,45,98,.10)
+        );
+
+    transition:
+        transform .5s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+/* Efek ketika mouse diarahkan ke peta */
+
+.client-map-image:hover img {
+    transform: scale(1.025);
+}
+
+
+/* =========================================================
+   PANEL INFORMASI DI SAMPING PETA
+========================================================= */
+
+.client-map-content {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 30px 25px;
+}
+
+
+.client-map-content .small-title {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.client-map-content h3 {
+    margin:
+        10px 0 17px;
+
+    color: var(--navy);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    letter-spacing: -.5px;
+}
+
+
+.client-map-content > p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.85;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   STATISTIK
+========================================================= */
+
+.client-map-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-top: 18px;
+}
+
+
+.client-stat {
+    padding: 13px 8px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.85);
+
+    border:
+        1px solid rgba(6,45,98,.08);
+
+    border-radius: 14px;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.client-stat:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(6,45,98,.08);
+}
+
+
+.client-stat strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+
+.client-stat span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   KARTU INFORMASI BAWAH
+========================================================= */
+
+.client-map-note {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 13px 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(234,245,255,.9),
+            rgba(255,255,255,.95)
+        );
+
+    border:
+        1px solid rgba(23,105,170,.10);
+
+    border-radius: 15px;
+}
+
+
+.client-note-icon {
+    flex-shrink: 0;
+
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--navy);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 12px rgba(6,45,98,.15);
+}
+
+
+.client-map-note strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 10px;
+
+    margin-bottom: 3px;
+}
+
+
+.client-map-note small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .client-map-card {
+        grid-template-columns: 1fr;
+    }
+
+    .client-map-image {
+        min-height: 400px;
+    }
+
+    .client-map-content {
+        padding:
+            25px 20px 30px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .client-map-section {
+        margin-top: 50px;
+
+        padding-top: 45px;
+    }
+
+
+    .client-map-heading {
+        margin-bottom: 28px;
+    }
+
+
+    .client-map-heading h2 {
+        font-size: 28px;
+
+        letter-spacing: -.5px;
+    }
+
+
+    .client-map-heading p {
+        font-size: 11px;
+
+        line-height: 1.8;
+    }
+
+
+    .client-map-card {
+        gap: 10px;
+
+        padding: 10px;
+
+        border-radius: 22px;
+    }
+
+
+    .client-map-image {
+        min-height: 270px;
+
+        padding:
+            38px 10px 10px;
+
+        border-radius: 17px;
+    }
+
+
+    .client-map-image img {
+        max-height: 300px;
+    }
+
+
+    .map-image-label {
+        top: 12px;
+        left: 12px;
+
+        font-size: 8px;
+    }
+
+
+    .client-map-content {
+        padding:
+            20px 10px 15px;
+    }
+
+
+    .client-map-content h3 {
+        font-size: 22px;
+    }
+
+
+    .client-map-content > p {
+        font-size: 11px;
+    }
+
+
+    .client-map-stats {
+        gap: 6px;
+    }
+
+
+    .client-stat {
+        padding: 11px 5px;
+    }
+
+
+    .client-stat strong {
+        font-size: 14px;
+    }
+
+
+    .client-stat span {
+        font-size: 7px;
+    }
+
+}
