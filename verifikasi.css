@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --navy: #0b1f3a;
+    --navy-light: #132f55;
+    --gold: #c9a227;
+    --gold-light: #e5c75a;
+    --white: #ffffff;
+    --light: #f5f7fa;
+    --text: #172033;
+    --muted: #687386;
+    --border: #e2e7ee;
+    --success: #16805b;
+    --success-bg: #eaf8f2;
+    --danger: #b42318;
+    --danger-bg: #fff1f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(201, 162, 39, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2f7 0%,
+            #f9fafc 50%,
+            #edf1f6 100%
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 15px;
+}
+
+.verification-page {
+    width: 100%;
+    max-width: 760px;
+}
+
+.verification-card {
+    background: var(--white);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(11, 31, 58, 0.12),
+        0 3px 12px rgba(11, 31, 58, 0.05);
+
+    overflow: hidden;
+
+    border-top: 5px solid var(--gold);
+}
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 28px 35px 22px;
+}
+
+.brand-mark {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 12px;
+
+    background: var(--navy);
+    color: var(--gold-light);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    border: 1px solid rgba(201, 162, 39, 0.5);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-text strong {
+    font-family: "Montserrat", sans-serif;
+    color: var(--navy);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.brand-text span {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+/* DIVIDER */
+
+.divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 35px;
+}
+
+/* LOADING */
+
+.loading {
+    text-align: center;
+    padding: 70px 30px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* RESULT */
+
+.result {
+    padding: 40px 45px 35px;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.status-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: var(--success-bg);
+    color: var(--success);
+
+    border: 7px solid #d9f2e7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.status-label {
+    color: var(--success);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.7px;
+
+    margin-bottom: 8px;
+}
+
+.result h1,
+.not-found h1 {
+    font-family: "Montserrat", sans-serif;
+
+    color: var(--navy);
+
+    font-size: 27px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.verification-description {
+    color: var(--muted);
+
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* DATA */
+
+.certificate-data {
+    text-align: left;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    margin-top: 20px;
+}
+
+.data-row {
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 13px;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-row:nth-child(even) {
+    background: #fafbfd;
+}
+
+.data-row span {
+    color: var(--muted);
+}
+
+.data-row strong {
+    color: var(--navy);
+
+    font-weight: 600;
+
+    text-align: right;
+}
+
+.valid-text {
+    color: var(--success) !important;
+}
+
+/* NOTE */
+
+.verification-note {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    text-align: left;
+
+    margin-top: 20px;
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    background: var(--success-bg);
+
+    color: #226b52;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.verification-note span {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* NOT FOUND */
+
+.not-found {
+    text-align: center;
+
+    padding: 50px 45px;
+}
+
+.invalid-icon {
+    background: var(--danger-bg);
+    color: var(--danger);
+    border-color: #f9d8d5;
+}
+
+.invalid-label {
+    color: var(--danger);
+}
+
+.not-found p {
+    max-width: 500px;
+
+    margin: 0 auto 20px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.not-found-code {
+    display: inline-block;
+
+    padding: 10px 15px;
+
+    background: var(--danger-bg);
+
+    color: var(--danger);
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+.footer {
+    background: var(--navy);
+
+    padding: 22px 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.footer strong {
+    color: var(--white);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+}
+
+.footer span {
+    color: #aab6c8;
+
+    font-size: 9px;
+}
+
+.copyright {
+    white-space: nowrap;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .verification-card {
+        border-radius: 14px;
+    }
+
+    .brand {
+        padding: 23px 22px 18px;
+    }
+
+    .divider {
+        margin: 0 22px;
+    }
+
+    .brand-mark {
+        width: 48px;
+        height: 48px;
+        font-size: 14px;
+    }
+
+    .brand-text strong {
+        font-size: 13px;
+    }
+
+    .result {
+        padding: 35px 22px 28px;
+    }
+
+    .result h1,
+    .not-found h1 {
+        font-size: 22px;
+    }
+
+    .data-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .data-row strong {
+        text-align: left;
+    }
+
+    .footer {
+        padding: 20px 22px;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .copyright {
+        white-space: normal;
+    }
+}
