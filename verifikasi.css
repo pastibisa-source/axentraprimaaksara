@@ -76,26 +76,11 @@ body {
     padding: 28px 35px 22px;
 }
 
-.brand-mark {
-    width: 55px;
-    height: 55px;
-
-    border-radius: 12px;
-
-    background: var(--navy);
-    color: var(--gold-light);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 17px;
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    border: 1px solid rgba(201, 162, 39, 0.5);
+.axentra-logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .brand-text {
@@ -382,11 +367,10 @@ body {
         margin: 0 22px;
     }
 
-    .brand-mark {
-        width: 48px;
-        height: 48px;
-        font-size: 14px;
-    }
+ .axentra-logo {
+    width: 58px;
+    height: 58px;
+}
 
     .brand-text strong {
         font-size: 13px;
