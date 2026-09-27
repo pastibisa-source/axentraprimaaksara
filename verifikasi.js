@@ -15,7 +15,7 @@ const certificates = {
 
         position: "Founder & Human Resources",
 
-        company: "CV Axentra Prima Aksara",
+        company: "Axentra Prima Aksara",
 
         issueDate: "23 September 2026",
 
